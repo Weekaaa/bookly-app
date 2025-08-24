@@ -1,7 +1,9 @@
+import 'package:bookly_app/core/utils/app_router.dart';
 import 'package:bookly_app/core/utils/assets.dart';
 import 'package:bookly_app/core/utils/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class BestSellerListViewItem extends StatelessWidget {
@@ -9,16 +11,21 @@ class BestSellerListViewItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: SizedBox(
-        height: 150,
-        child: Row(
-          children: [
-            BookImage(),
-            SizedBox(width: 16),
-            Expanded(child: BookDetails()),
-          ],
+    return GestureDetector(
+      onTap: () {
+        GoRouter.of(context).push(AppRouter.kBookDetailsView);
+      },
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        child: SizedBox(
+          height: 150,
+          child: Row(
+            children: [
+              BookImage(),
+              SizedBox(width: 16),
+              Expanded(child: BookDetails()),
+            ],
+          ),
         ),
       ),
     );
@@ -89,6 +96,7 @@ class BookRating extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Icon(FontAwesomeIcons.solidStar, color: Colors.yellow, size: 20),
         SizedBox(width: 6),
