@@ -11,52 +11,63 @@ class BookDetailsViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        CustomBookDetailsAppBar(),
-        SizedBox(
-          width: MediaQuery.of(context).size.width * .45,
-          child: FeaturedListViewItem(),
-        ),
-        const SizedBox(height: 26),
-        Text(
-          'Despicable Me 4',
-          style: Styles.textStyle30.copyWith(fontWeight: FontWeight.w600),
-        ),
-        const SizedBox(height: 5),
-        Opacity(
-          opacity: .7,
-          child: Text(
-            'Bob & Stuart',
-            style: Styles.textStyle18.copyWith(fontStyle: FontStyle.italic),
+    return CustomScrollView(
+      slivers: [
+        SliverFillRemaining(
+          hasScrollBody: false,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const CustomBookDetailsAppBar(),
+              SizedBox(
+                width: MediaQuery.of(context).size.width * .45,
+                child: FeaturedListViewItem(),
+              ),
+              const SizedBox(height: 26),
+              Text(
+                'Despicable Me 4',
+                style: Styles.textStyle30.copyWith(fontWeight: FontWeight.w600),
+              ),
+              const SizedBox(height: 5),
+              Opacity(
+                opacity: .7,
+                child: Text(
+                  'Bob & Stuart',
+                  style: Styles.textStyle18.copyWith(
+                    fontStyle: FontStyle.italic,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 8),
+              const BookRating(),
+              const SizedBox(height: 28),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: MediaQuery.of(context).size.width * .09,
+                ),
+                child: BooksAction(),
+              ),
+              SizedBox(height: 30),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: MediaQuery.of(context).size.width * .07,
+                  ),
+                  child: Text(
+                    'You can also like',
+                    style: Styles.textStyle16.copyWith(
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 10),
+              const SimilarBooksListView(),
+              const SizedBox(height: 20),
+            ],
           ),
         ),
-        const SizedBox(height: 8),
-        BookRating(),
-        const SizedBox(height: 28),
-        Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: MediaQuery.of(context).size.width * .09,
-          ),
-          child: BooksAction(),
-        ),
-        SizedBox(height: 30),
-        Align(
-          alignment: Alignment.centerLeft,
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: MediaQuery.of(context).size.width * .07,
-            ),
-            child: Text(
-              'You can also like',
-              style: Styles.textStyle16.copyWith(fontWeight: FontWeight.w700),
-            ),
-          ),
-        ),
-        SizedBox(height: 10),
-        SimilarBooksListView(),
-        SizedBox(height: 20),
       ],
     );
   }
