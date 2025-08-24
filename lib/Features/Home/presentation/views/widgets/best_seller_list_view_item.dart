@@ -91,12 +91,17 @@ class BookDetails extends StatelessWidget {
 }
 
 class BookRating extends StatelessWidget {
-  const BookRating({super.key});
+  const BookRating({
+    super.key,
+    this.mainAxisAlignment = MainAxisAlignment.center,
+  });
+  final MainAxisAlignment mainAxisAlignment;
 
   @override
   Widget build(BuildContext context) {
     return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: mainAxisAlignment,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Icon(FontAwesomeIcons.solidStar, color: Colors.yellow, size: 20),
         SizedBox(width: 6),
